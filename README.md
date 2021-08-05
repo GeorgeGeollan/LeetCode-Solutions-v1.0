@@ -1,2 +1,2 @@
-# refactored-octo-sccotash
+# LeetCode-Solutions
 Solutions for Leetcode
