@@ -15,12 +15,12 @@
  */
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return helper(0, 0, inorder.length - 1, preorder, inorder);
+        return helper(0, preorder.length, 0, inorder.length, preorder, inorder);
     }
 
-    public TreeNode helper(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder)
+    public TreeNode helper(int preStart, int preEnd, int inStart, int inEnd, int[] preorder, int[] inorder)
     {
-        if(preStart > preorder.length - 1 || inStart > inEnd)
+        if(preStart == preEnd)
             return null;
 
         TreeNode root = new TreeNode(preorder[preStart]);
@@ -29,11 +29,15 @@ class Solution {
 
         for(int i = inStart; i <= inEnd; i++)
             if(inorder[i] == root.val)
+            {
                 inIndex = i;
+                break;
+            }
 
-        root.left = helper(preStart + 1, inStart, inIndex - 1, preorder, inorder);
-        root.right = helper(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inorder);
+        int leftNum = inIndex - inStart;
 
+        root.left = helper(preStart + 1, preStart + leftNum + 1, inStart, inIndex, preorder, inorder);
+        root.right = helper(preStart + leftNum + 1, preEnd, inIndex + 1, inEnd, preorder, inorder);
         return root;
     }
 }
