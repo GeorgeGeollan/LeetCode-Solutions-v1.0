@@ -27,15 +27,8 @@ class Solution {
             }
         }
 
-        ListNode cur = l1 == null ? l2 : l1;
-
-        while(cur != null)
-        {
-            dummy.next = cur;
-            dummy = dummy.next;
-            cur = cur.next;
-        }
-
+        dummy.next = l1 == null ? l2 : l1;
+        
         return ptr.next;
     }
 }
