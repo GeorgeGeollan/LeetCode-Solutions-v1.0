@@ -1,5 +1,5 @@
 class Solution {
-    public int[] singleNumbers(int[] nums) {
+    public int[] singleNumber(int[] nums) {
         int m = 1, n = 0, x = 0, y = 0;
 
         for(int num: nums)
