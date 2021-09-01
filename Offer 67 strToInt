@@ -1,0 +1,59 @@
+class Solution {
+    public int strToInt(String str) {
+        str = str.trim();
+        StringBuilder sb = new StringBuilder();
+
+        char[] character = str.toCharArray();
+
+        int flag = 1;
+        if(str.length() == 0)
+            return 0;
+
+        else if(str.length() == 1 && (str.charAt(0) > '9' || str.charAt(0) < '0'))
+            return 0;
+
+        else if(str.length() == 1 && (str.charAt(0) <= '9' && str.charAt(0) >= '0'))
+            sb.append(str);
+
+        else if(str.length() > 1)
+        {
+            char first = character[0];
+
+            if(first == '+' || first == '-' || (first >= '0' && first <= '9'))
+            {
+
+                if(first >= '0' && first <= '9')
+                    sb.append(first);
+
+                if(first == '-')
+                    flag = -1;
+
+                for(int i = 1; i < character.length; i++)
+                {
+                    if(!(character[i] >= '0' && character[i] <= '9'))
+                        break;
+
+                    if(character[i] >= '0' && character[i] <= '9')
+                        sb.append(character[i]);
+
+                    long value = Long.valueOf(sb.toString());
+
+                    if((int)value != value)
+                        return flag > 0 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+                    
+                }
+            }
+        }
+
+        if(sb.length() == 0)
+            return 0;
+
+        long value = Long.valueOf(sb.toString());
+
+        if(flag < 0)
+            value = value * -1;
+
+        return (int)value == value ? (int)value : flag > 0 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+
+    }
+}
