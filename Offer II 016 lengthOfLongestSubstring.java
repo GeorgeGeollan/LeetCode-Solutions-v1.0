@@ -33,6 +33,7 @@ class Solution1 {
     }
 }
 
+
 class Solution2 {
     public int lengthOfLongestSubstring(String s) {
         if(s.length() == 0)
