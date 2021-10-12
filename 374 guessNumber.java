@@ -17,7 +17,7 @@ public class Solution extends GuessGame {
             int m = l + (r - l) / 2;
             
             if(guess(m) == -1)
-                r = m - 1;
+                r = m;
             
             else if(guess(m) == 1)
                 l = m + 1;
