@@ -26,8 +26,10 @@ class Solution1 {
         int l = 0, r = target.length() - 1;
         char[] letter = target.toCharArray();
 
-        while(l <= r) {
-            if(letter[l] == letter[r]) {
+        while(l <= r) 
+        {
+            if(letter[l] == letter[r])
+            {
                 l++;
                 r--;
             }
