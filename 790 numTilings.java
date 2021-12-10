@@ -1,6 +1,6 @@
 class Solution {
     public int numTilings(int n) {
-        int mod = 1000000009;
+        int mod = 1000000007;
         long dp[] = new long[] {1, 0, 0, 0};
         
         for(int i = 0; i < n; i++) {
