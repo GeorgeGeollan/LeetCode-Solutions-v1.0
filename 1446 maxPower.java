@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public int maxPower(String s) {
         // s的最小长度为1，所以max的最小值也可以设置为1
         int max = 1;
@@ -23,6 +23,34 @@ class Solution {
             }
         }
 
+        return max;
+    }
+}
+
+class Solution2 {
+    public int maxPower(String s) {
+        int max = 0;
+        
+        int n = s.length();
+        
+        for(int l = 0, r = 0; l < n;) {
+            char firstLetter = s.charAt(l);
+            char secondLetter = s.charAt(r);
+            
+            while(firstLetter == secondLetter) {
+                r++;
+                if(r >= n)
+                    break;
+                secondLetter = s.charAt(r);
+                
+            }
+            
+            max = Math.max(r - l, max);
+            
+            l++;
+            r = l;
+        }
+        
         return max;
     }
 }
