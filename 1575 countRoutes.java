@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     int mod = 1000000007;
     int[][] cache;
     public int countRoutes(int[] locations, int start, int finish, int fuel) {
@@ -44,3 +44,32 @@ class Solution {
         return sum;
     }
 }
+
+class Solution2 {
+    int mod = 1000000007;
+    public int countRoutes(int[] locations, int start, int finish, int fuel) {
+        int n = locations.length;
+        int[][] f = new int[n][fuel + 1];
+
+        for(int i = 0; i <= fuel; i++)
+            f[finish][i] = 1;
+
+        for(int i = 0; i <= fuel; i++) {
+            for(int j = 0; j < n; j++) {
+                for(int k = 0; k < n; k++) {
+                    if(j != k) {
+                        int need = Math.abs(locations[j] - locations[k]);
+                        
+                        if(i >= need) {
+                            f[j][i] += f[k][i - need];
+                            f[j][i] %= mod;
+                        }
+                    }
+                }
+            }
+        }
+
+        return f[start][fuel];
+    }
+}
+
