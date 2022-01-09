@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public char slowestKey(int[] releaseTimes, String keysPressed) {
         int lasttime = 0;
         int max = 0;
@@ -26,5 +26,27 @@ class Solution {
         }
 
         return maxChar;
+    }
+}
+
+class Solution2 {
+    public char slowestKey(int[] releaseTimes, String keysPressed) {
+        int idx = 0, max = releaseTimes[0];
+        int n = releaseTimes.length;
+
+        for(int i = 1; i < n; i++) {
+            int cur = releaseTimes[i] - releaseTimes[i - 1];
+
+            if(cur > max) {
+                max = cur;
+                idx = i;
+            }
+
+            else if(cur == max && keysPressed.charAt(i) > keysPressed.charAt(idx))
+                idx = i;
+
+        }
+
+        return keysPressed.charAt(idx);
     }
 }
