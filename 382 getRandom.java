@@ -8,7 +8,7 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
+class Solution1 {
     ListNode head;
     public Solution(ListNode head) {
         this.head = head;
@@ -29,6 +29,28 @@ class Solution {
         }
         
         return res;
+    }
+}
+
+class Solution2 {
+    ListNode head;
+    Random random = new Random(20220116);
+    public Solution(ListNode head) {
+        this.head = head;
+    }
+    
+    public int getRandom() {
+        ListNode cur = head;
+        int idx = 0, ans = 0;
+
+        while(cur != null && ++idx >= 0) {
+            if(random.nextInt(idx) == 0)
+                ans = cur.val;
+
+            cur = cur.next;
+        }
+
+        return ans;
     }
 }
 
