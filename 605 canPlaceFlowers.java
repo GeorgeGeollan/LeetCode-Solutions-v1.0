@@ -6,7 +6,7 @@ class Solution {
             
             else if(i == flowerbed.length - 1 || flowerbed[i + 1] == 0) {
                 n--;
-                i = i + 1;
+                i = i + 2;
             }
             
             else
