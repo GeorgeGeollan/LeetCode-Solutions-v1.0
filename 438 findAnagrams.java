@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public List<Integer> findAnagrams(String s, String p) {
         List<Integer> res = new ArrayList<>();
 
@@ -27,5 +27,37 @@ class Solution {
         }
 
         return res;
+    }
+}
+
+class Solution2 {
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> list = new ArrayList<>();
+        int[] cnt1 = new int[26];
+        int[] cnt2 = new int[26];
+
+        for(int i = 0; i < p.length(); i++)
+            cnt1[p.charAt(i) - 'a']++;
+        
+        for(int l = 0, r = 0; r < s.length(); r++) {
+            cnt2[s.charAt(r) - 'a']++;
+
+            if(r - l + 1 > p.length())
+                cnt2[s.charAt(l++) - 'a']--;
+
+            if(check(cnt1, cnt2))
+                list.add(l);
+        }
+        
+
+        return list;
+    }
+
+    public boolean check(int[] c1, int[] c2) {
+        for(int i = 0; i < 26; i++)
+            if(c1[i] != c2[i])
+                return false;
+
+        return true;
     }
 }
