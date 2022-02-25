@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public int compareVersion(String version1, String version2) {
         String[] list1 = version1.split("\\.");
         String[] list2 = version2.split("\\.");
@@ -38,5 +38,33 @@ class Solution {
 
         return 0;
         
+    }
+}
+
+class Solution2 {
+    public int compareVersion(String version1, String version2) {
+        int i = 0, j = 0;
+        int m = version1.length(), n = version2.length();
+        
+        while(i < m || j < n) {
+            int num1 = 0, num2 = 0;
+            
+            while(i < m && version1.charAt(i) != '.')
+                num1 = num1 * 10 + version1.charAt(i++) - '0';
+            
+            while(j < n && version2.charAt(j) != '.')
+                num2 = num2 * 10 + version2.charAt(j++) - '0';
+            
+            if(num1 < num2)
+                return -1;
+            
+            if(num1 > num2)
+                return 1;
+            
+            i++;
+            j++;
+        }
+        
+        return 0;
     }
 }
