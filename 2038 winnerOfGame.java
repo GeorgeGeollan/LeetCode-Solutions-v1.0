@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public boolean winnerOfGame(String colors) {
         int As = 0, Bs = 0;
         int cntA = 0, cntB = 0;
@@ -44,5 +44,23 @@ class Solution {
         System.out.println(As + " " + Bs);
 
         return As > Bs;
+    }
+}
+
+
+class Solution2 {
+    public boolean winnerOfGame(String colors) {
+        int a = 0, b = 0;
+        char[] letter = colors.toCharArray();
+
+        for(int i = 1; i < letter.length - 1; i++) {
+            if(letter[i - 1] == 'A' && letter[i] == 'A' && letter[i + 1] == 'A')
+                a++;
+
+            if(letter[i - 1] == 'B' && letter[i] == 'B' && letter[i + 1] == 'B')
+                b++;
+        }
+
+        return a > b;
     }
 }
