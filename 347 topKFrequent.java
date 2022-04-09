@@ -1,44 +1,41 @@
-class Solution {
+class Solution {  
     public int[] topKFrequent(int[] nums, int k) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int[] res = new int[k];
-        PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>()
-        {
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        
+        for(int num: nums) {
+            int cnt = map.getOrDefault(num, 0);
+            map.put(num, cnt + 1);
+        }
+        
+        
+        
+        PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
             @Override
-            public int compare(Integer a, Integer b)
-            {
-                return map.get(a) - map.get(b);
+            public int compare(Integer a, Integer b) {
+               return map.get(a) - map.get(b);
             }
         });
-
-        int count = 0;
-        for(int num: nums)
-        {
-            count = map.getOrDefault(num, 0);
-            count++;
-            map.put(num, count);
-        }
-
-        for(Integer key: map.keySet())
-        {
-            if(pq.size() < k)
+        
+        for(Integer key : map.keySet()) {
+            if(pq.size() < k) {
                 pq.add(key);
+            }
             
-            else if(map.get(key) > map.get(pq.peek()))
-            {
-                pq.remove();
+            else if(map.get(key) > map.get(pq.peek())) {
+                pq.poll();
                 pq.add(key);
             }
         }
         
-        int i = 0;
-        while(!pq.isEmpty())
-        {
-           res[i] = pq.remove();
-           i++;
+        
+        int[] ans = new int[k];
+        
+        
+        for(int i = 0; i < k; i++) {
+            ans[i] = pq.poll();
         }
-
-        return res;
-
+        
+        return ans;
     }
 }
