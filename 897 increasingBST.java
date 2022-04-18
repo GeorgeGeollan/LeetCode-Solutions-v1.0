@@ -18,29 +18,24 @@ class Solution {
     
     public TreeNode increasingBST(TreeNode root) {
         dfs(root);
-        
         TreeNode dummy = new TreeNode(-1);
         TreeNode cur = dummy;
         
-        for(TreeNode node: list) {
+        for (TreeNode node : list) {
             cur.right = node;
-            cur.left = null;
-            cur = cur.right;
+            node.left = null;
+            cur = node;
         }
         
         return dummy.right;
-        
     }
     
-    public void dfs(TreeNode root) {
-        if(root == null)
-            return;
     
-        
+    void dfs(TreeNode root) {
+        if (root == null) return ;
         dfs(root.left);
         list.add(root);
         dfs(root.right);
-        
-
     }
 }
+
