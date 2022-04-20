@@ -13,7 +13,7 @@
  *     }
  * }
  */
-class BSTIterator {
+class BSTIterator1 {
     TreeNode cur;
     Stack<TreeNode> stack;
     public BSTIterator(TreeNode root) {
@@ -36,6 +36,34 @@ class BSTIterator {
     
     public boolean hasNext() {
         return cur != null || !stack.isEmpty();
+    }
+}
+
+class BSTIterator2 {
+    Deque<TreeNode> d = new ArrayDeque<>();
+
+    public BSTIterator(TreeNode root) {
+        dfsLeft(root);   
+    }
+    
+    public int next() {
+        TreeNode root = d.pollLast();
+        int ans = root.val;
+        root = root.right;
+        dfsLeft(root);
+
+        return ans;
+    }
+    
+    public boolean hasNext() {
+        return !d.isEmpty();
+    }
+
+    public void dfsLeft(TreeNode root) {
+        while(root != null) {
+            d.addLast(root);
+            root = root.left;
+        }
     }
 }
 
