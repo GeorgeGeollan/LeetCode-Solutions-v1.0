@@ -1,26 +1,28 @@
 class Solution {
     public int maxProduct(String[] words) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map  = new HashMap<>();
         
         for(String word: words) {
-            int val = 0, len = word.length();
-            for(char ch: word.toCharArray()) {
-                val |= 1 << (ch - 'a');
+            int t = 0;
+            int m = word.length();
+            
+            for(int i = 0; i < m; i++) {
+                int u = word.charAt(i) - 'a';
+                t |= (1 << u);
             }
-
-            if(!map.containsKey(val) || map.get(val) < len)
-                map.put(val, len);
+            
+            if(!map.containsKey(t) || map.get(t) < m)
+                map.put(t, m);
         }
-
-        int maxP = 0;
-
+        
+        int ans = 0;
         for(int a: map.keySet()) {
-            for(int b : map.keySet()) {
+            for(int b: map.keySet()) {
                 if((a & b) == 0)
-                    maxP = Math.max(maxP, map.get(a) * map.get(b));
+                    ans = Math.max(ans, map.get(a) * map.get(b));
             }
         }
-
-        return maxP;
+        
+        return ans;
     }
 }
