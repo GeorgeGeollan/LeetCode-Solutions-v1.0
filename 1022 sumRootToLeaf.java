@@ -13,7 +13,7 @@
  *     }
  * }
  */
-class Solution {
+class Solution1 {
     int ans;
     public int sumRootToLeaf(TreeNode root) {
         ans = 0;
@@ -36,5 +36,24 @@ class Solution {
         
         dfs(root.left, prev);
         dfs(root.right, prev);
+    }
+}
+
+class Solution2 {
+    public int sumRootToLeaf(TreeNode root) {
+        return dfs(root, 0);
+    }
+
+    public int dfs(TreeNode root, int sum) {
+        int ans = 0;
+        int cur = sum * 2 + root.val;
+
+        if(root.left != null)
+            ans += dfs(root.left, cur);
+
+        if(root.right != null)
+            ans += dfs(root.right, cur);
+
+        return root.left == null && root.right == null ? cur : ans;
     }
 }
