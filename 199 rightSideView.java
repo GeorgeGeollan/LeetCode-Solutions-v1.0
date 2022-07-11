@@ -13,7 +13,7 @@
  *     }
  * }
  */
-class Solution {
+class Solution1 {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> list = new ArrayList<>();
 
@@ -33,5 +33,49 @@ class Solution {
         depth++;
         dfs(list, root.right, depth);
         dfs(list, root.left, depth);
+    }
+}
+
+class Solution2 {
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+
+        Queue<TreeNode> queue = new LinkedList<>();
+
+        if(root == null)
+            return list;
+
+        queue.add(root);
+        list.add(root.val);
+
+        while(!queue.isEmpty()) {
+            int size = queue.size();
+
+            boolean isRight = false;
+            for(int i = 0; i < size; i++) {
+                TreeNode cur = queue.poll();
+
+                if(cur.right != null) {
+                    if(!isRight) {
+                        list.add(cur.right.val);
+                        isRight = true;
+                    }
+                        
+
+                    queue.add(cur.right);
+                }
+
+                if(cur.left != null) {
+                    if(!isRight) {
+                        list.add(cur.left.val);
+                        isRight = true;
+                    }
+
+                    queue.add(cur.left);
+                }
+            }
+        }
+
+        return list;
     }
 }
