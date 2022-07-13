@@ -19,6 +19,9 @@ class Solution {
         queue.add(root);
         List<List<Integer>> ans = new ArrayList<>();
 
+        if(root == null)
+            return ans;
+
         while(!queue.isEmpty()) {
             int size = queue.size();
             List<Integer> list = new ArrayList<>();
