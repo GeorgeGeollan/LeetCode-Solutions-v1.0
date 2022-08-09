@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public int minStartValue(int[] nums) {
         int n = nums.length;
         int[] dp = new int[n + 1];
@@ -19,5 +19,22 @@ class Solution {
             return 1;
 
         return 1 - min;
+    }
+}
+
+class Solution2 {
+    public int minStartValue(int[] nums) {
+        int min_neg = 0;
+        int ans = 0;
+
+        for(int num: nums) {
+            ans += num;
+
+            if(ans < min_neg) {
+                min_neg = ans;
+            }
+        }
+
+        return Math.abs(min_neg) + 1;
     }
 }
