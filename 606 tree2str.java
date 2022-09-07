@@ -13,7 +13,7 @@
  *     }
  * }
  */
-class Solution {
+class Solution1 {
     String ans;
     public String tree2str(TreeNode root) {
         ans = "";
@@ -41,5 +41,29 @@ class Solution {
             ans += ")";
         }
         
+    }
+}
+
+class Solution2 {
+    StringBuilder sb = new StringBuilder();
+    public String tree2str(TreeNode root) {
+        dfs(root);
+        return sb.substring(1, sb.length() - 1);
+    }
+
+    public void dfs(TreeNode root) {
+        sb.append("(");
+        sb.append(root.val);
+
+        if(root.left != null)
+            dfs(root.left);
+
+        else if(root.right != null)
+            sb.append("()");
+
+        if(root.right != null)
+            dfs(root.right);
+
+        sb.append(")");
     }
 }
