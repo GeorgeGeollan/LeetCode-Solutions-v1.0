@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int right = binarySearch(arr, x);
         int left = right - 1;
@@ -39,3 +39,23 @@ class Solution {
         return low;
     }
 }
+
+class Solution2 {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int len = arr.length;
+        int min = 0;
+        
+        List<Integer> list = new ArrayList<>();
+        
+        for(int i = k; i < len; i++, min++) {
+            if(arr[i] != arr[min] && Math.abs(arr[i] - x) >= Math.abs(arr[min] - x))
+                break;
+        }
+        
+        for(int i = 0; i < k; i++)
+            list.add(arr[min++]);
+        
+        return list;
+    }
+}
+
