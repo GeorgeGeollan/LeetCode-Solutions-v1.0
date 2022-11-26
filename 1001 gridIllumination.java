@@ -51,7 +51,9 @@ class Solution {
         if(map.get(key) == 1)
             map.remove(key);
 
-        else
+        else {
             map.put(key, map.get(key) - 1);
+        }
+            
     }
 }
