@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public boolean halvesAreAlike(String s) {
         int l = 0;
         int r = s.length() - 1;
@@ -30,5 +30,34 @@ class Solution {
         
         return cnt1 == cnt2;
         
+    }
+}
+
+class Solution2 {
+    public boolean halvesAreAlike(String s) {
+        s = s.toLowerCase();
+        int l = 0, r = s.length() - 1;
+        Set<Character> set = new HashSet<>();
+
+        set.add('o');
+        set.add('e');
+        set.add('i');
+        set.add('a');
+        set.add('u');
+        
+        int cnt = 0;
+
+        while(l < r) {
+            if(set.contains(s.charAt(l)))
+                cnt++;
+
+            if(set.contains(s.charAt(r)))
+                cnt--;
+            
+            l++;
+            r--;
+        }
+
+        return cnt == 0;
     }
 }
