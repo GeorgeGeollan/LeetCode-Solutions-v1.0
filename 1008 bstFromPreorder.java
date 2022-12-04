@@ -18,16 +18,14 @@ class Solution {
         return build(preorder, 0, preorder.length - 1);
     }
 
-    public TreeNode build(int[] preorder, int left, int right)
-    {
+    public TreeNode build(int[] preorder, int left, int right) {
         if(left > right)
             return null;
 
         TreeNode node = new TreeNode(preorder[left]);
         int k = left + 1;
 
-        while(k <= right)
-        {
+        while(k <= right) {
             if(preorder[k] > preorder[left])
                 break;
 
