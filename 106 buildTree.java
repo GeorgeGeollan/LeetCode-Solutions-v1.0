@@ -19,8 +19,10 @@ class Solution {
     }
 
     public TreeNode buildTree(int[] inorder, int inLeft, int inRight, int[] postorder, int postLeft, int postRight) {
-        if(inRight - inLeft < 1)
+        if(inRight - inLeft < 1) {
             return null;
+        }
+            
 
         if(inRight - inLeft == 1)
             return new TreeNode(inorder[inLeft]);
