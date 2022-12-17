@@ -12,8 +12,10 @@ class Solution {
                 ans += cur * (cur - 1) / 2;
             }
             
-            else
+            else {
                 ans += count[i] * count[60 - i];
+            }
+                
         }
         
         return ans;
