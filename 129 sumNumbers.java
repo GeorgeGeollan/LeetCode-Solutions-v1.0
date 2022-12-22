@@ -28,11 +28,15 @@ class Solution {
         }
         
         
-        if(level == 0)
+        if(level == 0) {
             num = num * root.val;
+        }
+            
         
-        else
+        else {
             num = num * 10 + root.val;
+        }
+            
         
         level++;
         if(root != null && root.right == null && root.left == null)
