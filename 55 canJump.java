@@ -20,14 +20,19 @@ class Solution1 {
 
 class Solution2 {
     public boolean canJump(int[] nums) {
-        int n = nums.length;
-        int cover = 0;
+        if(nums == null)
+            return false;
 
-        for(int i = 0; i <= cover; i++) {
-            cover = Math.max(nums[i] + i, cover);
+        int k = 0;
 
-            if(cover >= n - 1)
+        for(int i = 0; i <= k; i++) {
+            int temp = i + nums[i];
+
+            k = Math.max(k, temp);
+
+            if(k >= nums.length - 1) {
                 return true;
+            }
         }
 
         return false;
