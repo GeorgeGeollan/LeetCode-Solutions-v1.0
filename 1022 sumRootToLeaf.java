@@ -48,8 +48,10 @@ class Solution2 {
         int ans = 0;
         int cur = sum * 2 + root.val;
 
-        if(root.left != null)
+        if(root.left != null) {
             ans += dfs(root.left, cur);
+        }
+            
 
         if(root.right != null)
             ans += dfs(root.right, cur);
