@@ -22,8 +22,10 @@ class Solution1 {
         }
 
         int sum = 0;
-        for(int i = -100; i <= 100; i++)
+        for(int i = -100; i <= 100; i++) {
             sum += cnt[i + 100] * i;
+        }
+            
 
         return sum;
     }
