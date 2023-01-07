@@ -27,15 +27,21 @@ class Solution {
         if(root == null)
             return;
         
-        if(list.size() <=  level)
+        if(list.size() <=  level) {
             list.add(new ArrayList<>());
+        }
+            
 
-        if(level % 2 == 0)
+        if(level % 2 == 0) {
             list.get(level).add(root.val);
+        }
+            
         
-        else
+        else {
             list.get(level).add(0, root.val);
 
+        }
+            
         dfs(list, root.left, level + 1);
         dfs(list, root.right, level + 1);
     }
