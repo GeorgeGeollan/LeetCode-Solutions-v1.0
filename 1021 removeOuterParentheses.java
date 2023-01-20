@@ -1,7 +1,9 @@
 class Solution {
     public String removeOuterParentheses(String s) {
-        if(s.length() == 0 || s == null)
+        if(s.length() == 0 || s == null) {
             return "";
+        }
+            
 
         int start = 0;
         int end = 0;
