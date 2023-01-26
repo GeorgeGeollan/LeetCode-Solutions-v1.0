@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public String getSmallestString(int n, int k) {
         StringBuilder sb = new StringBuilder();
         
@@ -24,5 +24,39 @@ class Solution {
         }
 
         return sb.toString();
+    }
+}
+
+class Solution2 {
+    public String getSmallestString(int n, int k) {
+        if(n == 0)
+            return "";
+
+        char[] ch = new char[n];
+
+        for(int i = 0; i < n; i++) {
+            ch[i] = 'a';
+        }
+
+        int rest = k - n;
+
+        if(rest == 0) {
+            return new String(ch);
+        }
+
+        for(int i = n - 1; i >= 0; i--) {
+            if(rest < 26) {
+                ch[i] = (char)('a' + rest);
+
+                break;
+            }
+
+            else {
+                ch[i] = 'z';
+                rest -= 25;
+            }
+        }
+
+        return new String(ch);
     }
 }
