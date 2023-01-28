@@ -39,11 +39,15 @@ class Solution2 {
             for(int j = 0; j  < i + 1; j++) {
                 int val = triangle.get(i).get(j);
                 dp[i & 1][j] = Integer.MAX_VALUE;
-                if(j != 0)
+                if(j != 0) {
                     dp[i & 1][j] = Math.min(dp[(i - 1) & 1][j - 1] + val, dp[i & 1][j]);
+                }
+                    
 
-                if(j != i)
+                if(j != i) {
                     dp[i & 1][j] = Math.min(dp[i & 1][j], dp[(i - 1) & 1][j] + val);
+                }
+                    
 
             }
         }
