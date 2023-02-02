@@ -13,7 +13,6 @@ class Solution {
             }
 
             map.put(key.charAt(i), cur);
-            System.out.println(cur);
             cur = (char)(cur + 1);
         }
 
