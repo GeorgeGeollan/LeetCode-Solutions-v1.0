@@ -17,8 +17,6 @@ class Solution {
             int b = dp[total - 1] - a;
 
             int len = total - i - 1;
-            System.out.println(a + len - b);
-
             max = Math.max(max, a + len - b);
         }
 
