@@ -5,6 +5,7 @@ class Solution {
         int n = distance.length;
         int temp1 = start;
         int temp2 = destination;
+        
         while(temp1 != destination) {
             sum += distance[temp1];
             temp1 = (temp1 + 1) % n;
