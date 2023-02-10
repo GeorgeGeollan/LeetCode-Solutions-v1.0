@@ -7,8 +7,7 @@ class Solution {
         for(List<Integer> edge: edges)
             indegree[edge.get(1)]++;
 
-        for(int i = 0; i < n; i++)
-        {
+        for(int i = 0; i < n; i++) {
             if(indegree[i] == 0)
                 list.add(i);
         }
