@@ -32,7 +32,6 @@ class Solution {
                     queue.add(cur.right);
                 
                 sum += cur.val;
-
             }
         }
         
