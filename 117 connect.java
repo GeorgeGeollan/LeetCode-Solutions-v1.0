@@ -23,9 +23,10 @@ class Node {
 
 class Solution {
     public Node connect(Node root) {
-        if(root == null)
+        if(root == null) {
             return null;
-
+        }
+            
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
 
