@@ -8,8 +8,10 @@ class Solution {
                 max.pollLast();
             max.addLast(r);
 
-            while(!min.isEmpty() && nums[r] <= nums[min.peekLast()])
+            while(!min.isEmpty() && nums[r] <= nums[min.peekLast()]) {
                 min.pollLast();
+            }
+                
             min.addLast(r);
 
             while(Math.abs(nums[max.peekFirst()] - nums[min.peekFirst()])> limit) {
