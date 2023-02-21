@@ -1,12 +1,12 @@
 class Solution1 {
     public int singleNonDuplicate(int[] nums) {
-        int res = 0;
+        int ans = 0;
         
         for(int num: nums) {
-            res ^= num;
+            ans ^= num;
         }
         
-        return res;
+        return ans;
     }
 }
 
