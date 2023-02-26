@@ -7,8 +7,10 @@ class Solution {
         int cnt = n;
 
         for(int i = 0; i < n; i++) {
-            if(intervals[i][1] <= max)
+            if(intervals[i][1] <= max) {
                 cnt--;
+            }
+                
 
             max = Math.max(max, intervals[i][1]);
         }
