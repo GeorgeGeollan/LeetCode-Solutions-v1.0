@@ -6,8 +6,7 @@ class Solution {
         for(List<String> list: paths)
             map.put(list.get(0), list.get(1));
 
-        while(map.containsKey(first))
-        {
+        while(map.containsKey(first)) {
             first = map.get(first);
         }
 
