@@ -35,8 +35,10 @@ class Solution {
         Node clone = new Node(node.val, new ArrayList<>());
         lookup.put(node, clone);
         
-        for(Node n : node.neighbors)
+        for(Node n : node.neighbors) {
             clone.neighbors.add(dfs(n, lookup));
+        }
+            
         
         return clone;
     }
