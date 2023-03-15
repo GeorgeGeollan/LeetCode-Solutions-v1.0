@@ -11,7 +11,6 @@ class Solution {
                 cnt--;
             }
                 
-
             max = Math.max(max, intervals[i][1]);
         }
 
