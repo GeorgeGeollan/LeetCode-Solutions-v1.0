@@ -22,8 +22,7 @@ class BSTIterator1 {
     }
     
     public int next() {
-        while(cur != null)
-        {
+        while(cur != null) {
             stack.push(cur);
             cur = cur.left;
         }
