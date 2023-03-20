@@ -41,6 +41,7 @@ class Solution2 {
 
         for(int i = 0; i < m; i++) {
             List<Integer> row = new ArrayList<>();
+            
             for(int j = 0; j < n; j++) {
                 row.add(0);
             }
