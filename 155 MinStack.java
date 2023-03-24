@@ -8,8 +8,7 @@ class MinStack1 {
     }
     
     public void push(int val) {
-        if(min >= val)
-        {
+        if(min >= val) {
             stack.push(min);
             min = val;
         }
