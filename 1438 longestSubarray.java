@@ -17,11 +17,15 @@ class Solution {
             while(Math.abs(nums[max.peekFirst()] - nums[min.peekFirst()])> limit) {
                 l++;
 
-                if(l > max.peekFirst())
+                if(l > max.peekFirst()) {
                     max.pollFirst();
+                }
+                    
 
-                if(l > min.peekFirst())
+                if(l > min.peekFirst()) {
                     min.pollFirst();
+                }
+                    
             }
 
             ans = Math.max(ans, r - l + 1);
