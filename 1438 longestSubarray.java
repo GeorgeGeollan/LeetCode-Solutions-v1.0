@@ -4,8 +4,10 @@ class Solution {
         Deque<Integer> max = new ArrayDeque<>(), min = new ArrayDeque<>();
 
         for(int l = 0, r = 0; r < n; r++) {
-            while(!max.isEmpty() && nums[r] >= nums[max.peekLast()])
+            while(!max.isEmpty() && nums[r] >= nums[max.peekLast()]) {
                 max.pollLast();
+            }
+                
             max.addLast(r);
 
             while(!min.isEmpty() && nums[r] <= nums[min.peekLast()]) {
