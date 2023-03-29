@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public int countVowelStrings(int n) {
         if(n == 1)
             return 5;
@@ -12,5 +12,11 @@ class Solution {
         
         return 5 * a + 4 * b + 3 * c + 2 * d + 1 * e;
         
+    }
+}
+
+class Solution2 {
+    public int countVowelStrings(int n) {
+        return (n + 1) * (n + 2) * (n + 3) * (n + 4) / 24;
     }
 }
