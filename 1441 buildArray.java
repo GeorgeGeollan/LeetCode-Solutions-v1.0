@@ -7,9 +7,10 @@ class Solution {
         for(int i = 1, j = 0; i <= n && j < m; i++) {
             ans.add("Push");
 
-            if(target[j] != i)
+            if(target[j] != i) {
                 ans.add("Pop");
-
+            }
+                
             else
                 j++;
         }
