@@ -27,7 +27,6 @@ class Solution {
                 if(l > min.peekFirst()) {
                     min.pollFirst();
                 }
-                    
             }
 
             ans = Math.max(ans, r - l + 1);
