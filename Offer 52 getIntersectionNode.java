@@ -9,50 +9,57 @@
  *     }
  * }
  */
-public class Solution1 {
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        HashSet<ListNode> set = new HashSet<>();
+class Solution1 {
+    ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode tmpA = headA, tmpB = headB;
 
-        while(headA != null && headB != null)
-        {
-            if(set.contains(headA))
-                return headA;
-            else
-                set.add(headA);
-            
-            if(set.contains(headB))
-                return headB;
-            
-            else
-                set.add(headB);
-
-            headA = headA.next;
-            headB = headB.next;
+        if(headA != null && headB == null) {
+            return null;
         }
 
-        ListNode cur = headA == null ? headB : headA;
+        if(headA == null && headB != null) {
+            return null;
+        }
 
-        while(cur != null)
-        {
-            if(set.contains(cur))
-                return cur;
-            
-            else
-                cur = cur.next;
+        while(tmpA != null || tmpB != null) {
+            if(tmpA == null) {
+                tmpA = headB;
+            }
+
+            if(tmpB == null) {
+                tmpB = headA;
+            }
+
+            if(tmpA == tmpB) {
+                return tmpA;
+            }
+
+            tmpA = tmpA.next;
+            tmpB = tmpB.next;
         }
 
         return null;
     }
 }
 
-public class Solution2 {
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+class Solution2 {
+    ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode A = headA, B = headB;
 
-        while(A != B)
-        {
-            A = A == null ? headB : A.next;
-            B = B == null ? headA : B.next;
+        while(A != B) {
+            A = A != null ? A.next : headB;
+            B = B != null ? B.next : headA;
         }
 
         return A;
