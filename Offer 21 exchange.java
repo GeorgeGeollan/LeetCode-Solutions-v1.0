@@ -1,47 +1,21 @@
 class Solution1 {
     public int[] exchange(int[] nums) {
-        int left = 0;
-        int right = nums.length - 1;
+        int oddIdx = 0, evenIdx = nums.length - 1;
 
-        while(left <= right)
-        {
-            while(left <= right && nums[left] % 2 == 1)
-                left++;
-            
-            while(left <= right&& nums[right] % 2 == 0)
-                right--;
+        while(oddIdx < evenIdx) {
+            while(oddIdx < evenIdx && nums[oddIdx] % 2 == 1) {
+                oddIdx++;
+            }
 
-            if(left > right)
-                break;
-            
-            int temp = nums[left];
-            nums[left] = nums[right];
-            nums[right] = temp;
-            left++;
-            right--;
-        }
+            while(evenIdx > oddIdx && nums[evenIdx] % 2 == 0) {
+                evenIdx--;
+            }
 
-        return nums;
-    }
-}
-
-# simple version
-class Solution2 {
-    public int[] exchange(int[] nums) {
-        int left = 0;
-        int right = nums.length - 1;
-
-        while(left < right)
-        {
-            while(left < right && nums[left] % 2 == 1)
-                left++;
-            
-            while(left < right&& nums[right] % 2 == 0)
-                right--;
-            
-            int temp = nums[left];
-            nums[left] = nums[right];
-            nums[right] = temp;
+            int temp = nums[oddIdx];
+            nums[oddIdx] = nums[evenIdx];
+            nums[evenIdx] = temp;
+            oddIdx++;
+            evenIdx--;
         }
 
         return nums;
