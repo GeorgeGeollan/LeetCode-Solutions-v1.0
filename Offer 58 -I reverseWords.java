@@ -1,44 +1,23 @@
-class Solution1 {
+class Solution {
     public String reverseWords(String s) {
-        String[] words = s.split(" ");
-        String res = "";
-        int count = 0;
-
-        for(String word: words)
-        {
-            if(word.equals(""))
-                continue;
-
-            if(count == 0)
-                res = word;
-            
-            else
-                res = word + " " + res;
-            
-            count++;
-        }
-
-        return res;
-    }
-}
-
-class Solution2 {
-    public String reverseWords(String s) {
+        int n = 0;
         s = s.trim();
+        StringBuilder sb = new StringBuilder();
         String[] words = s.split(" ");
 
-        StringBuilder sb = new StringBuilder();
-
-        for(int i =  words.length - 1; i >= 0; i--)
-        {
-            if(words[i].equals(""))
+        for(int i = words.length - 1; i >= 0; i--) {
+            if(words[i].length() == 0) {
                 continue;
+            }
 
-            sb.append(words[i] + " ");
+            sb.append(words[i]);
+
+            if(i != 0) {
+                sb.append(" ");
+            }
         }
 
-        return sb.toString().trim();
+        return sb.toString();
+
     }
 }
-
-
