@@ -1,30 +1,30 @@
 class CQueue {
-    Stack stack1;
-    Stack stack2;
+    LinkedList<Integer> stack1;
+    LinkedList<Integer> stack2;
 
     public CQueue() {
-        stack1 = new Stack();
-        stack2 = new Stack();
+        stack1 = new LinkedList<>();
+        stack2 = new LinkedList<>();
     }
     
     public void appendTail(int value) {
-        stack2.add(value);
+        stack1.addLast(value);
     }
     
     public int deleteHead() {
-        if(stack1.isEmpty())
-        {
-            if(stack2.isEmpty())
-                return -1;
-            
-            else
-            {
-                while(!stack2.isEmpty())
-                    stack1.add(stack2.pop());
-            }
-        }
+       if(stack2.isEmpty()) {
+           if(stack1.isEmpty()) {
+               return -1;
+           }
 
-        return (int)stack1.pop();
+           else {
+               while(!stack1.isEmpty()) {
+                   stack2.addLast(stack1.removeLast());
+               }
+           }
+       }
+
+       return stack2.removeLast();
     }
 }
 
