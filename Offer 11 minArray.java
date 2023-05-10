@@ -1,12 +1,24 @@
 class Solution {
     public int minArray(int[] numbers) {
-        if(numbers.length < 2)
-            return numbers[0];
+        int n = numbers.length - 1;
+        int l = 0, r = n;
 
-        for(int i = 1; i < numbers.length; i++)
-            if(numbers[i - 1] > numbers[i])
-                return numbers[i];
+        while(l < r) {
+            int mid = (r - l) / 2 + l;
 
-        return numbers[0];
+            if(numbers[mid] < numbers[r]) {
+                r = mid;
+            }
+
+            else if(numbers[mid] > numbers[r]) {
+                l = mid + 1;
+            }
+
+            else {
+                r--;
+            }
+        }
+
+        return numbers[l];
     }
 }
