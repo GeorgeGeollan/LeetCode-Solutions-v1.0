@@ -9,24 +9,34 @@
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        List<List<Integer>> ans = new ArrayList<>();
+        if(root == null) {
+            return ans;
+        }
+        queue.add(root);
 
-        levelOrderDFS(root, res, 0);
+        while(!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> level = new ArrayList<>();
 
-        return res;
-    }
+            for(int i = 0; i < size; i++) {
+                TreeNode cur = queue.poll();
 
-    public void levelOrderDFS(TreeNode root, List<List<Integer>> res, int level)
-    {
-        if(root == null)
-            return;
-    
-        if(res.size() <= level)
-            res.add(new ArrayList<>());
-        
-        res.get(level).add(root.val);
+                level.add(cur.val);
 
-        levelOrderDFS(root.left, res, level + 1);
-        levelOrderDFS(root.right, res, level + 1);
+                if(cur.left != null) {
+                    queue.add(cur.left);
+                }
+
+                if(cur.right != null) {
+                    queue.add(cur.right);
+                }
+            }
+
+            ans.add(level);
+        }
+
+        return ans;
     }
 }
