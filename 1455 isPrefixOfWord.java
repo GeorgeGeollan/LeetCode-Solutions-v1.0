@@ -6,8 +6,10 @@ class Solution {
         for(int i = 0; i < words.length; i++) {
             int m = words[i].length();
             
-            if(m < n)
+            if(m < n) {
                 continue;
+            }
+                
             
             if(words[i].substring(0, n).equals(searchWord)) {
                 return i + 1;
