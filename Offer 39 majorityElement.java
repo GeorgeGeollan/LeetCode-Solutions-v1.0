@@ -1,35 +1,24 @@
-class Solution1 {
+class Solution {
     public int majorityElement(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int n = nums.length;
+        int cnt = 1;
+        // Arrays.sort(nums);
+        int target = nums[0];
 
-        for(int num: nums)
-        {
-            int count = map.getOrDefault(num, 0);
-            count++;
+        for(int i = 1; i < nums.length; i++) {
+            System.out.println(target);
+            if(target == nums[i]) {
+                cnt++;
+            }
 
-            map.put(num, count);
+            else if(cnt > 0 && target != nums[i]) {
+                cnt--;
+            }
 
-            if(count > n / 2)
-                return num;
+            else {
+                target = nums[i];
+            }
         }
 
-        return -1;
-    }
-}
-
-class Solution2 {
-    public int majorityElement(int[] nums) {
-        int count = 0, x = 0;
-
-        for(int num: nums)
-        {
-            if(count == 0)
-                x = num;
-
-            count += num == x ? 1 : -1;
-        }
-
-        return x;
+        return target;
     }
 }
