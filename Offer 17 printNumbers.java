@@ -1,12 +1,12 @@
 class Solution {
     public int[] printNumbers(int n) {
-        int length = (int)Math.pow(10, n);
+        int len = (int)(Math.pow(10, n)) - 1;
+        int[] ans = new int[len];
 
-        int[] arr = new int[length - 1];
+        for(int i = 0; i < len; i++) {
+            ans[i] = i + 1;
+        }
 
-        for(int i = 0; i < length - 1; i++)
-            arr[i] = i + 1;
-
-        return arr;
+        return ans;
     }
 }
