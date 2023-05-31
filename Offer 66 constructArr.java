@@ -1,23 +1,18 @@
 class Solution {
     public int[] constructArr(int[] a) {
-        int n = a.length;
+        int[] ans = new int[a.length];
+        Arrays.fill(ans, 1);
 
-        if(n == 0)
-            return new int[0];
-
-        int temp = 1;
-        int[] B = new int[n];
-        B[0] = 1;
-
-        for(int i = 1; i < n; i++)
-            B[i] = B[i - 1] * a[i - 1];
-
-        for(int i = n - 1; i >= 1; i--)
-        {
-            temp *= a[i];
-            B[i - 1] *= temp;
+        for(int i = 1; i < a.length; i++) {
+            ans[i] = a[i - 1] * ans[i - 1];
         }
 
-        return B;
+        int product = 1;
+        for(int i = a.length - 2; i >= 0; i--) {
+            product *= a[i + 1];
+            ans[i] = ans[i] * product;
+        }
+        
+        return ans;
     }
 }
