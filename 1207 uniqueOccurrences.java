@@ -9,9 +9,10 @@ class Solution {
         }
 
         for(int i = 0; i < cnt.length; i++) {
-            if(cnt[i] == 0)
+            if(cnt[i] == 0) {
                 continue;
-                
+            }
+            
             if(set.contains(cnt[i]))
                 return false;
 
