@@ -1,13 +1,8 @@
 class Solution {
+    int ans = 0;
     public int sumNums(int n) {
-        return dfs(n);
-    }
-
-    public int dfs(int x) {
-        if(x == 0) {
-            return 0;
-        }
-
-        return x + dfs(x - 1);
+        boolean x = n > 1 && sumNums(n - 1) > 0;
+        ans += n;
+        return ans;
     }
 }
