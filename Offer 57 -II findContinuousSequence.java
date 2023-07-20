@@ -1,29 +1,32 @@
 class Solution {
     public int[][] findContinuousSequence(int target) {
-        int l = 1, r = 1, sum = 0;
-        List<int[]> res = new ArrayList<>();
+        int l = 1;
+        int r = 2;
+        List<int[]> ans = new ArrayList<>();
+        int sum = 3;
 
-        while(l <= target / 2)
-        {
-            if(sum < target)
-                sum += r++;
+        while(l < r) {
+            if(sum == target) {
+                int[] cur = new int[r - l + 1];
 
-            else if(sum > target)
-                sum -= l++;
+                for(int i = l; i <= r; i++) {
+                    cur[i - l] = i;
+                }
 
-            else
-            {
-                int[] arr = new int[r - l];
+                ans.add(cur);
+            }
 
-                for(int i = 0; i < arr.length; i++)
-                    arr[i] = i + l;
+            if(sum >= target) {
+                sum -= l;
+                l++;
+            }
 
-                res.add(arr);
-
-                sum -= l++;
+            else {
+                r++;
+                sum += r;
             }
         }
 
-        return res.toArray(new int[res.size()][]);
+        return ans.toArray(new int[0][]);
     }
 }
