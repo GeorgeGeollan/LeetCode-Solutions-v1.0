@@ -9,25 +9,25 @@ class Solution {
         int cnt = 0;
 
         while(left <= right && top <= bottom) {
-            for(int i = left; i <= right && left <= right && top <= bottom; i++) {
+            for(int i = left; i <= right; i++) {
                 ans[cnt++] = matrix[top][i]; 
             }
 
             top++;
 
-            for(int i = top; i <= bottom && left <= right && top <= bottom; i++) {
+            for(int i = top; i <= bottom; i++) {
                 ans[cnt++] = matrix[i][right];
             }
 
             right--;
 
-            for(int i = right; i >= left && left <= right && top <= bottom; i--) {
+            for(int i = right; i >= left && top <= bottom; i--) {
                 ans[cnt++] = matrix[bottom][i];
             }
 
             bottom--;
 
-            for(int i = bottom; i >= top && left <= right && top <= bottom; i--) {
+            for(int i = bottom; i >= top && left <= right; i--) {
                 ans[cnt++] = matrix[i][left];
             }
             
