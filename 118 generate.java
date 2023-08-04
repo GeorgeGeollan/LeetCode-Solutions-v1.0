@@ -18,7 +18,6 @@ class Solution {
         for(int i = 3; i <= numRows; i++) {
             List<Integer> list = new ArrayList<>();
             list.add(1);
-            
             List<Integer> prev = ans.get(i - 2);
 
             for(int j = 1; j < prev.size(); j++) {
