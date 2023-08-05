@@ -1,14 +1,11 @@
 class Solution {
     public int longestStrChain(String[] words) {
         Map<String, Integer> map = new HashMap<>();
-
         Arrays.sort(words, (a, b) -> (a.length() - b.length()));
-
         int minV = words[0].length(), maxV = 1;
 
         for(String word: words) {
             int m = word.length();
-
             int len = 1;
 
             if(m > minV) {
