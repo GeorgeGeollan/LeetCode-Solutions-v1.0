@@ -1,7 +1,6 @@
 class Solution {
     public int maximum69Number (int num) {
         StringBuilder sb = new StringBuilder();
-
         String str = String.valueOf(num);
         char[] nums = str.toCharArray();
 
