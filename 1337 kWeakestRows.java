@@ -14,11 +14,15 @@ class Solution {
             while(l < r) {
                 int mid = l + r + 1 >> 1;
 
-                if(mat[i][mid ] >= 1)
+                if(mat[i][mid ] >= 1) {
                     l = mid;
+                }
+                    
                 
-                else
+                else {
                     r = mid - 1;
+                }
+                    
             }
 
             int cur = mat[i][r] >= 1 ? r + 1 : r;
