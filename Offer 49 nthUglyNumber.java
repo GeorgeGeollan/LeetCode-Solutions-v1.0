@@ -4,19 +4,21 @@ class Solution {
         int[] dp = new int[n];
         dp[0] = 1;
 
-        for(int i = 1; i < n; i++)
-        {
-            int n2 = dp[a] * 2, n3 = dp[b] * 3, n5 = dp[c] * 5;
-            dp[i] = Math.min(Math.min(n2, n3), n5);
+        for(int i = 1; i < n; i++) {
+            int min = Math.min(Math.min(2 * dp[a], 3 * dp[b]), 5 * dp[c]);
+            dp[i] = min;
 
-            if(dp[i] == n2)
+            if(min == 2 * dp[a]) {
                 a++;
-            
-            if(dp[i] == n3)
-                b++;
+            }
 
-            if(dp[i] == n5)
+            if(min == 3 * dp[b]) {
+                b++;
+            }
+
+            if(min == 5 * dp[c]) {
                 c++;
+            }
         }
 
         return dp[n - 1];
