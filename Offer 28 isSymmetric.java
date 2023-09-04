@@ -9,17 +9,22 @@
  */
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        return root == null ? true : dfs(root.left, root.right);
+        if(root == null) {
+            return true;
+        }
+
+        return recur(root.left, root.right);
     }
 
-    public boolean dfs(TreeNode left, TreeNode right)
-    {
-        if(left == null && right == null)
+    public boolean recur(TreeNode a, TreeNode b) {
+        if(a == null && b == null) {
             return true;
+        }
 
-        if(left == null || right == null || left.val != right.val)
+        if(a == null || b == null || (a.val != b.val)) {
             return false;
+        }
 
-        return dfs(left.left, right.right) && dfs(left.right, right.left);
+        return recur(a.right, b.left) && recur(a.left, b.right);
     }
 }
