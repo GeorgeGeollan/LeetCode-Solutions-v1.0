@@ -1,21 +1,14 @@
 class Solution {
-    public int maxValue(int[][] grid) {
-        int m = grid.length, n = grid[0].length;
-        int[][] f = new int[m][n];
-        for(int i = 0; i < m; i++) {
-            for(int j = 0; j < n; j++){
-                if(i > 0) {
-                    f[i][j] = Math.max(f[i][j], f[i - 1][j]);
-                }
-
-                if(j > 0) {
-                    f[i][j] = Math.max(f[i][j], f[i][j - 1]);
-                }
-
-                f[i][j] += grid[i][j];
-            }
+    public int maxSubArray(int[] nums) {
+        int n = nums.length;
+        int[] dp = new int[n + 1];
+        int ans = nums[0];
+        dp[0] = nums[0] > 0 ? nums[0] : 0; 
+        for(int i = 1; i < n; i++) {
+            dp[i] = Math.max(nums[i], nums[i] + dp[i - 1]);
+            ans = Math.max(ans, dp[i]);
         }
 
-        return f[m - 1][n - 1];
+        return ans;
     }
 }
