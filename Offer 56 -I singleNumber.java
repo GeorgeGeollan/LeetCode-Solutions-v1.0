@@ -1,23 +1,18 @@
 class Solution {
-    public int[] singleNumber(int[] nums) {
-        int m = 1, n = 0, x = 0, y = 0;
-
-        for(int num: nums)
-            n ^= num;
-
-        while((m & n) == 0)
-            m <<= 1;
-        
-        for(int num: nums)
-        {
-            if((num & m) == 0)
-                x ^= num;
-            
-            else
-                y ^= num;
+    public int[] singleNumbers(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] ans = new int[2];
+        int start = 0;
+        for(int num: nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
 
-        return new int[]{x, y};
+        for(Integer key: map.keySet()) {
+            if(map.get(key) == 1) {
+                ans[start++] = key;
+            }
+        }
 
+        return ans;
     }
 }
