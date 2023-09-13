@@ -1,19 +1,21 @@
-class Solution1 {
+class Solution {
     public int singleNumber(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        int[] bits = new int[32];
 
-        for(int num: nums)
-        {
-            int count = map.getOrDefault(num, 0);
-            count++;
-
-            map.put(num, count);
+        for(int num: nums) {
+            for(int i = 0; i < 32; i++) {
+                bits[i] += num & 1;
+                num >>>= 1;
+            }
         }
 
-        for(int num: nums)
-            if(map.get(num) == 1)
-                return num;
+        int ans = 0, m = 3;
 
-        return -1;
+        for(int i = 0; i < 32; i++) {
+            ans <<= 1;
+            ans |= bits[31 - i] % m;
+        }
+
+        return ans;
     }
 }
