@@ -1,40 +1,17 @@
-class Solution1 {
+class Solution {
     public boolean canJump(int[] nums) {
-        int maxPosition = 0;
-        int n = nums.length;
-        
-        for(int i = 0; i < nums.length; i++)
-        {
-            if(i > maxPosition)
-                return false;
-            
-            maxPosition = Math.max(maxPosition, i + nums[i]);
-            
-            if(maxPosition >= n - 1)
-                break;
-        }
-        
-        return true;
-    }
-}
-
-class Solution2 {
-    public boolean canJump(int[] nums) {
-        if(nums == null)
-            return false;
-
-        int k = 0;
-
-        for(int i = 0; i <= k; i++) {
-            int temp = i + nums[i];
-
-            k = Math.max(k, temp);
-
-            if(k >= nums.length - 1) {
+        int target = 0, n = nums.length;
+        for(int i = 0; i < n; i++) {
+            target = Math.max(nums[i] + i, target);
+            if(target == n - 1) {
                 return true;
+            }
+
+            if(target <= i) {
+                return false;
             }
         }
 
-        return false;
+        return true;
     }
 }
