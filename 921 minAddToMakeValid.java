@@ -1,16 +1,16 @@
 class Solution {
     public int minAddToMakeValid(String s) {
-        int ans = 0, score = 0;
+        int l = 0, r = 0;
+        for(char letter: s.toCharArray()) {
+            if(letter == '(') {
+                l++;
+            } else {
+                if(l == 0) r++;
 
-        for(char ch: s.toCharArray()) {
-            score += ch == '(' ? 1 : -1;
-
-            if(score < 0) {
-                score = 0;
-                ans++;
+                else l--;
             }
         }
 
-        return ans + score;
+        return l + r;
     }
 }
