@@ -1,0 +1,22 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
+        int[] rowOfZeros = new int[m], colOfZeros = new int[n];
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(matrix[i][j] == 0) {
+                    rowOfZeros[i] = colOfZeros[j] = 1;
+                }
+            }
+        }
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(rowOfZeros[i] == 1 || colOfZeros[j] == 1) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+    }
+}
